@@ -1,59 +1,122 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <title>JS Calculator</title>
 
-    <title>JS Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script>
-      function updateDisplay(number){
-        
-        let display = document.getElementById('display');
 
-        display.innerHTML += number
-      }
-    </script>
-  </head>
-  <body>
-    
-    <div class="container-fluid">
-    <h1>JS Calculator</h1>
 
-    <div id="display" class="bg-info text-center text-white m-3 py-5">0</div>
+  <script>
 
-    <a id="equals" class="btn btn-block btn-primary">=</a>
+    function updateDisplay(number) {
 
-    <a id="zero" class="btn btn-block btn-primary" onclick="updateDisplay(0)">0</a>
-    <a id="one" class="btn btn-block btn-primary" onclick="updateDisplay(1)">1</a>
-    <a id="two" class="btn btn-block btn-primary" onclick="updateDisplay(2)">2</a>
-    <a id="three" class="btn btn-block btn-primary" onclick="updateDisplay(3)">3</a>
-    <a id="four" class="btn btn-block btn-primary" onclick="updateDisplay(4)">4</a>
-    <a id="five" class="btn btn-block btn-primary"onclick="updateDisplay(5)" >5</a>
-    <a id="six" class="btn btn-block btn-primary" onclick="updateDisplay(6)">6</a>
-    <a id="seven" class="btn btn-block btn-primary" onclick="updateDisplay(7)">7</a>
-    <a id="eight" class="btn btn-block btn-primary" onclick="updateDisplay(8)">8</a>
-    <a id="nine" class="btn btn-block btn-primary" onclick="updateDisplay(9)">9</a>
+      let display = document.getElementById('display');
+      display.innerHTML += number
+    }
 
-    <a id="add" class="btn btn-block btn-secondary">+</a>
-    <a id="subtract" class="btn btn-block btn-secondary">-</a>
-    <a id="multiply" class="btn btn-block btn-secondary">*</a>
-    <a id="divide" class="btn btn-block btn-secondary">/</a>
-    <a id="decimal" class="btn btn-block btn-secondary">.</a>
-    <a id="clear" class="btn btn-block btn-warning">C</a>
-    
-    
-    
+    function clearDisplay(number) {
+
+      let display = document.getElementById('display');
+      display.innerHTML = "";
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col">
+        <h1>JS Calculator</h1>
+      </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+
+    <div class="row text-center">
+      <div class="col">
+        <div id="display" class="bg-info text-white m-3 py-5"></div>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-4">
+        <a id="zero" class="btn btn-block btn-primary" onclick="updateDisplay(0)">0</a>
+        <a id="one" class="btn btn-block btn-primary" onclick="updateDisplay(1)">1</a>
+        <a id="two" class="btn btn-block btn-primary" onclick="updateDisplay(2)">2</a>
+        <a id="equals" class="btn btn-block btn-primary">=</a>
+      </div>
+      <div class="col-4">
+        <a id="three" class="btn btn-block btn-primary" onclick="updateDisplay(3)">3</a>
+        <a id="four" class="btn btn-block btn-primary" onclick="updateDisplay(4)">4</a>
+        <a id="five" class="btn btn-block btn-primary" onclick="updateDisplay(5)">5</a>
+        <a id="clear" class="btn btn-block btn-warning" onclick="clearDisplay()">C</a>
+      </div>
+      <div class="col-4">
+        <a id="six" class="btn btn-block btn-primary" onclick="updateDisplay(6)">6</a>
+        <a id="seven" class="btn btn-block btn-primary" onclick="updateDisplay(7)">7</a>
+        <a id="eight" class="btn btn-block btn-primary" onclick="updateDisplay(8)">8</a>
+        <a id="nine" class="btn btn-block btn-primary" onclick="updateDisplay(9)">9</a>
+      </div>
+    </div>
+    <div class="row text-center pt-3">
+      <div class="col">
+        <a id="add" class="btn btn-block btn-secondary" onclick="updateDisplay(6)" >+</a>
+      </div>
+      <div class="col">
+        <a id="subtract" class="btn btn-block btn-secondary" onclick="updateDisplay(6)">-</a>
+      </div>
+      <div class="col">
+        <a id="multiply" class="btn btn-block btn-secondary">*</a>
+      </div>
+      <div class="col">
+        <a id="divide" class="btn btn-block btn-secondary">/</a>
+      </div>
+      <div class="col">
+        <a id="decimal" class="btn btn-block btn-secondary">.</a>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
