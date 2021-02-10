@@ -13,17 +13,71 @@
 
   <script>
 
-    function updateDisplay(number) {
+    let trailingResult = 0;
+    let operationOptions = ['decimal', 'divide', 'multiply', 'subtract', 'add'];
+    let workingOperation = "";
+
+    function updateDisplay(input) {
 
       let display = document.getElementById('display');
-      display.innerHTML += number
+
+      if (display.innerHTML === "0" && operationOptions.indexOf(input) === -1) {
+        display.innerHTML = input;
+      } else if (operationOptions.indexOf(input) >= 0) {
+        
+        
+        if (workingOperation === "") {
+          //Dealing without an initial operand
+          workingOperation = input
+          trailingResult = display.innerHTML
+          display.innerHTML = 0;
+        } else {
+          //Dealing with a set operand
+          workingOperation = input;
+          trailingResult = calculate(trailingResult, display.innerHTML, workingOperation)
+          display.innerHTML = trailingResult;
+          
+        }
+      } else if (input === 'equals') {
+        display.innerHTML = calculate(trailingResult, display.innerHTML, workingOperation)
+        trailingResult = display.innerHTML
+      } else {
+        display.innerHTML += input
+      }
+
     }
 
-    function clearDisplay(number) {
+    function clearDisplay() {
 
       let display = document.getElementById('display');
-      display.innerHTML = "";
+      display.innerHTML = 0;
     }
+
+    function calculate(firstNumber, secondNumber, operation) {
+      let result = "";
+      firstNumber = parseFloat(firstNumber);
+      secondNumber = parseFloat(secondNumber)
+
+
+      switch (operation) {
+        case "add":
+          result = firstNumber + secondNumber;
+          break;
+        case "subtract":
+          result = firstNumber - secondNumber;
+          break;
+        case "multiply":
+          result = firstNumber * secondNumber;
+          break;
+        case "divide":
+          result = firstNumber / secondNumber;
+          break;
+      }
+
+      return result.toString();
+    }
+
+
 
   </script>
 </head>
@@ -39,7 +93,7 @@
 
     <div class="row text-center">
       <div class="col">
-        <div id="display" class="bg-info text-white m-3 py-5"></div>
+        <div id="display" class="bg-info text-white m-3 py-5">0</div>
       </div>
     </div>
 
@@ -48,7 +102,7 @@
         <a id="zero" class="btn btn-block btn-primary" onclick="updateDisplay(0)">0</a>
         <a id="one" class="btn btn-block btn-primary" onclick="updateDisplay(1)">1</a>
         <a id="two" class="btn btn-block btn-primary" onclick="updateDisplay(2)">2</a>
-        <a id="equals" class="btn btn-block btn-primary">=</a>
+        <a id="equals" class="btn btn-block btn-primary" onclick="updateDisplay('equals')">=</a>
       </div>
       <div class="col-4">
         <a id="three" class="btn btn-block btn-primary" onclick="updateDisplay(3)">3</a>
@@ -65,19 +119,19 @@
     </div>
     <div class="row text-center pt-3">
       <div class="col">
-        <a id="add" class="btn btn-block btn-secondary" onclick="updateDisplay(6)" >+</a>
+        <a id="add" class="btn btn-block btn-secondary" onclick="updateDisplay('add')">+</a>
       </div>
       <div class="col">
-        <a id="subtract" class="btn btn-block btn-secondary" onclick="updateDisplay(6)">-</a>
+        <a id="subtract" class="btn btn-block btn-secondary" onclick="updateDisplay('subtract')">-</a>
       </div>
       <div class="col">
-        <a id="multiply" class="btn btn-block btn-secondary">*</a>
+        <a id="multiply" class="btn btn-block btn-secondary" onclick="updateDisplay('multiply')">*</a>
       </div>
       <div class="col">
-        <a id="divide" class="btn btn-block btn-secondary">/</a>
+        <a id="divide" class="btn btn-block btn-secondary" onclick="updateDisplay('divide')">/</a>
       </div>
       <div class="col">
-        <a id="decimal" class="btn btn-block btn-secondary">.</a>
+        <a id="decimal" class="btn btn-block btn-secondary" onclick="updateDisplay('decimal')">.</a>
       </div>
 
     </div>
