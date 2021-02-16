@@ -13,30 +13,32 @@
 
   <script>
 
-    let trailingResult = 0;
-    let operationOptions = ['decimal', 'divide', 'multiply', 'subtract', 'add'];
-    let workingOperation = "";
+      let trailingResult = 0;
+      let operationOptions = ['decimal', 'divide', 'multiply', 'subtract', 'add'];
+      let workingOperation = "";
 
     function updateDisplay(input) {
 
       let display = document.getElementById('display');
+      let secondaryDisplay = document.getElementById('secondarydisplay')
 
       if (display.innerHTML === "0" && operationOptions.indexOf(input) === -1) {
         display.innerHTML = input;
       } else if (operationOptions.indexOf(input) >= 0) {
-        
-        
+
+
         if (workingOperation === "") {
           //Dealing without an initial operand
-          workingOperation = input
-          trailingResult = display.innerHTML
+          workingOperation = input;
+          trailingResult = display.innerHTML;
           display.innerHTML = 0;
         } else {
           //Dealing with a set operand
           workingOperation = input;
           trailingResult = calculate(trailingResult, display.innerHTML, workingOperation)
+          secondaryDisplay.innerHTML = trailingResult;
           display.innerHTML = trailingResult;
-          
+
         }
       } else if (input === 'equals') {
         display.innerHTML = calculate(trailingResult, display.innerHTML, workingOperation)
@@ -92,8 +94,11 @@
     </div>
 
     <div class="row text-center">
-      <div class="col">
+      <div class="col-10">
         <div id="display" class="bg-info text-white m-3 py-5">0</div>
+      </div>
+      <div class="col-2">
+        <div id="secondarydisplay" class="bg-secondary text-white m-3 py-5">0</div>
       </div>
     </div>
 
